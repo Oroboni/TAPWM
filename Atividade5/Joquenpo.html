@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jokenpô - Pedra, Papel ou Tesoura</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-6">
+  <h1 class="text-4xl font-bold mb-4">Jokenpô</h1>
+  <p class="mb-6 text-lg">Escolha: Pedra, Papel ou Tesoura</p>
+
+  <div class="flex gap-4 mb-6">
+    <button onclick="jogar('pedra')" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-2xl shadow">🪨 Pedra</button>
+    <button onclick="jogar('papel')" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-2xl shadow">📄 Papel</button>
+    <button onclick="jogar('tesoura')" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-2xl shadow">✂️ Tesoura</button>
+  </div>
+
+  <div id="res" class="text-xl font-semibold mb-2"></div>
+  <div id="pc" class="text-lg text-gray-300 mb-4"></div>
+
+  <div class="flex gap-10 text-center text-lg">
+    <div>Jogador: <span id="p-pts">0</span></div>
+    <div>Computador: <span id="c-pts">0</span></div>
+  </div>
+
+  <script>
+    const op = ['pedra', 'papel', 'tesoura'];
+    let pPts = 0;
+    let cPts = 0;
+
+    function jogar(p) {
+      const c = op[Math.floor(Math.random() * 3)];
+      document.getElementById("pc").innerText = `Computador escolheu: ${c}`;
+
+      const r = resultado(p, c);
+
+      if (r === 'ganhou') {
+        pPts++;
+        document.getElementById("res").innerText = 'Você ganhou! 🎉';
+      } else if (r === 'perdeu') {
+        cPts++;
+        document.getElementById("res").innerText = 'Você perdeu! 😢';
+      } else {
+        document.getElementById("res").innerText = 'Empate! 🤝';
+      }
+
+      document.getElementById("p-pts").innerText = pPts;
+      document.getElementById("c-pts").innerText = cPts;
+    }
+
+    function resultado(p, c) {
+      if (p === c) return 'empate';
+      if (
+        (p === 'pedra' && c === 'tesoura') ||
+        (p === 'papel' && c === 'pedra') ||
+        (p === 'tesoura' && c === 'papel')
+      ) {
+        return 'ganhou';
+      } else {
+        return 'perdeu';
+      }
+    }
+  </script>
+</body>
+</html>
