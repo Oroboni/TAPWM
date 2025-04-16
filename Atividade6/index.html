@@ -138,12 +138,14 @@
   </div>
 
   <script>
+    let mv = 0, mn=0, media = 0, mc = 0;
     function enviar(){
+      mc++;
       const idade = document.getElementById('idade').value;
       const sexo = document.getElementById('sexo').value;
       const opiniao = document.getElementById('opiniao').value;
-      let mv = 0, mn=0;
 
+      media += parseInt(idade);
       if (idade < input.value) {
         mv = idade;
       }
@@ -151,7 +153,7 @@
         mn = idade;
       }
 
-
+      document.getElementById('media-idade').innerText = media / mc;
       document.getElementById('mais-velho').innerText = mv;
       document.getElementById('mais-novo').innerText =  mn;
     }
