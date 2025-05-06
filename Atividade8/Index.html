@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercícios Lógicos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    fieldset {
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    legend {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <fieldset>
+      <legend>1. Maior de Três Números</legend>
+      <label for="n1-maior">Número 1</label>
+      <input type="number" id="n1-maior" name="n1-maior" required />
+      <label for="n2-maior">Número 2</label>
+      <input type="number" id="n2-maior" name="n2-maior" required />
+      <label for="n3-maior">Número 3</label>
+      <input type="number" id="n3-maior" name="n3-maior" required />
+      <button type="submit">Ver Maior Número</button>
+    </fieldset>
+  </form>
+
+  <form>
+    <fieldset>
+      <legend>2. Ordem Crescente</legend>
+      <label for="n1-ordem">Número 1</label>
+      <input type="number" id="n1-ordem" name="n1-ordem" required />
+      <label for="n2-ordem">Número 2</label>
+      <input type="number" id="n2-ordem" name="n2-ordem" required />
+      <label for="n3-ordem">Número 3</label>
+      <input type="number" id="n3-ordem" name="n3-ordem" required />
+      <button type="submit">Ver Ordem Crescente</button>
+    </fieldset>
+  </form>
+
+  <form>
+    <fieldset>
+      <legend>3. Verificar Palíndromo</legend>
+      <label for="texto">Digite uma palavra ou frase</label>
+      <input type="text" id="texto" name="texto" required />
+      <button type="submit">Verificar Palíndromo</button>
+    </fieldset>
+  </form>
+
+</body>
+
+<script>
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Previne o envio do formulário
+        const formId = this.querySelector('legend').innerText;
+        let result = '';
+    
+        if (formId === '1. Maior de Três Números') {
+            const n1 = parseFloat(document.getElementById('n1-maior').value);
+            const n2 = parseFloat(document.getElementById('n2-maior').value);
+            const n3 = parseFloat(document.getElementById('n3-maior').value);
+            result = Math.max(n1, n2, n3);
+            alert(`O maior número é: ${result}`);
+        } else if (formId === '2. Ordem Crescente') {
+            const n1 = parseFloat(document.getElementById('n1-ordem').value);
+            const n2 = parseFloat(document.getElementById('n2-ordem').value);
+            const n3 = parseFloat(document.getElementById('n3-ordem').value);
+            result = [n1, n2, n3].sort((a, b) => a - b).join(', ');
+            alert(`Ordem crescente: ${result}`);
+        } else if (formId === '3. Verificar Palíndromo') {
+            const texto = document.getElementById('texto').value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            result = texto === texto.split('').reverse().join('') ? 'É um palíndromo!' : 'Não é um palíndromo!';
+            alert(result);
+        }
+        });
+    });
+</script>
+</html>
