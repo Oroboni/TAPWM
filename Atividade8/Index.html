@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exercícios Lógicos</title>
   <style>
     body {
@@ -13,6 +14,7 @@
       flex-direction: column;
       align-items: center;
     }
+
     fieldset {
       background: white;
       border: 2px solid #ccc;
@@ -22,15 +24,18 @@
       width: 100%;
       max-width: 400px;
     }
+
     legend {
       font-weight: bold;
       font-size: 1.2rem;
     }
+
     label {
       display: block;
       margin-top: 1rem;
       font-weight: bold;
     }
+
     input[type="number"],
     input[type="text"] {
       width: 100%;
@@ -39,6 +44,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     button {
       margin-top: 1.5rem;
       padding: 0.7rem 1.2rem;
@@ -49,11 +55,13 @@
       cursor: pointer;
       width: 100%;
     }
+
     button:hover {
       background-color: #0056b3;
     }
   </style>
 </head>
+
 <body>
 
   <form>
@@ -91,33 +99,49 @@
     </fieldset>
   </form>
 
+  <form>
+    <fieldset>
+      <legend>4. Subconjunto”</legend>
+      <label for="texto">Digite duas palavras ou frases</label>
+      <input type="text" id="sub1" name="sub1" required />
+      <input type="text" id="sub2" name="sub2" required />
+      <button type="submit">Verificar Palíndromo</button>
+    </fieldset>
+  </form>
+
 </body>
 
 <script>
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Previne o envio do formulário
-        const formId = this.querySelector('legend').innerText;
-        let result = '';
-    
-        if (formId === '1. Maior de Três Números') {
-            const n1 = parseFloat(document.getElementById('n1-maior').value);
-            const n2 = parseFloat(document.getElementById('n2-maior').value);
-            const n3 = parseFloat(document.getElementById('n3-maior').value);
-            result = Math.max(n1, n2, n3);
-            alert(`O maior número é: ${result}`);
-        } else if (formId === '2. Ordem Crescente') {
-            const n1 = parseFloat(document.getElementById('n1-ordem').value);
-            const n2 = parseFloat(document.getElementById('n2-ordem').value);
-            const n3 = parseFloat(document.getElementById('n3-ordem').value);
-            result = [n1, n2, n3].sort((a, b) => a - b).join(', ');
-            alert(`Ordem crescente: ${result}`);
-        } else if (formId === '3. Verificar Palíndromo') {
-            const texto = document.getElementById('texto').value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            result = texto === texto.split('').reverse().join('') ? 'É um palíndromo!' : 'Não é um palíndromo!';
-            alert(result);
-        }
-        });
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formId = this.querySelector('legend').innerText;
+      let result = '';
+
+      if (formId === '1. Maior de Três Números') {
+        const n1 = parseFloat(document.getElementById('n1-maior').value);
+        const n2 = parseFloat(document.getElementById('n2-maior').value);
+        const n3 = parseFloat(document.getElementById('n3-maior').value);
+        result = Math.max(n1, n2, n3);
+        alert(`O maior número é: ${result}`);
+      } else if (formId === '2. Ordem Crescente') {
+        const n1 = parseFloat(document.getElementById('n1-ordem').value);
+        const n2 = parseFloat(document.getElementById('n2-ordem').value);
+        const n3 = parseFloat(document.getElementById('n3-ordem').value);
+        result = [n1, n2, n3].sort((a, b) => a - b).join(', ');
+        alert(`Ordem crescente: ${result}`);
+      } else if (formId === '3. Verificar Palíndromo') {
+        const texto = document.getElementById('texto').value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        result = texto === texto.split('').reverse().join('') ? `${texto} É um palíndromo!` : `${texto} Não é um palíndromo!`;
+        alert(result);
+      } else if (formId === '4. Subconjunto”') {
+        const sub1 = document.getElementById('sub1').value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        const sub2 = document.getElementById('sub2').value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        result = sub1.includes(sub2) ? `${sub2} é um subconjunto de ${sub1}` : `${sub2} não é um subconjunto de ${sub1}`;
+        alert(result);
+      }
     });
+  });
 </script>
+
 </html>
