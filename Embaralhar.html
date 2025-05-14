@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        fieldset {
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.3rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <fieldset>
+            <legend>Embaralha Letras</legend>
+            <label for="n1-maior">Letra 1</label>
+            <input type="text" id="n1-maior" name="n1-maior" maxlength="1" required />
+            <label for="n2-maior">Letra 2</label>
+            <input type="text" id="n2-maior" name="n2-maior" maxlength="1"  required />
+            <label for="n3-maior">Letra 3</label>
+            <input type="text" id="n3-maior" name="n3-maior" maxlength="1"  required />
+            <label for="n4-maior">Letra 4</label>
+            <input type="text" id="n4-maior" name="n4-maior" maxlength="1" required />
+            <label for="n5-maior">Letra 5</label>
+            <input type="text" id="n5-maior" name="n5-maior" maxlength="1" required />
+            <button type="submit">Somar</button>
+        </fieldset>
+    </form>
+
+</body>
+<script>
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const n1 = document.getElementById('n1-maior').value;
+            const n2 = document.getElementById('n2-maior').value;
+            const n3 = document.getElementById('n3-maior').value;
+            const n4 = document.getElementById('n4-maior').value;
+            const n5 = document.getElementById('n5-maior').value;
+            let a = [n1, n2, n3, n4, n5];
+            embaralha(a);
+            
+            function embaralha(a) {
+                let resul = [];
+                for (let i = 0; i < 10; i++) {
+                    resul.push(a.sort(() => Math.random() - 0.5).join(''));
+                }
+                let resultado = resul.join(', ');
+                resul = a.sort(() => Math.random() - 0.5).join('');
+                alert("As palavras embaralhadas são: " + resultado);
+            }
+
+        });
+    });
+</script>
+
+</html>
