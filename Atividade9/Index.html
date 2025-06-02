@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de IMC</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <form class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg">
+        <fieldset class="border border-gray-300 rounded-xl p-5">
+            <legend class="text-xl font-bold text-blue-600 px-2">Calculadora de IMC</legend>
+            
+            <label for="peso" class="block mt-4 text-sm font-semibold text-gray-700">Peso (kg)</label>
+            <input type="number" id="peso" name="peso" required
+            class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" />
+            
+            <label for="alt" class="block mt-4 text-sm font-semibold text-gray-700">Altura (m)</label>
+            <input type="number" id="alt" name="alt" step="0.01" required
+            class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400" />
+            
+            <button type="button" onclick="imc()"
+            class="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all">Ver IMC</button>
+            
+            <p id="resultado" class="mt-4 text-center text-lg font-medium text-gray-700"></p>
+        </fieldset>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
