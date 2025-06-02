@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercício de JS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <form class="w-full max-w-xl p-6 bg-white rounded-2xl shadow-lg space-y-6">
+
+    <fieldset class="border border-gray-300 rounded-xl p-5">
+      <legend class="text-xl font-bold text-green-600 px-2">Área do Retângulo</legend>
+
+      <label class="block mt-2">Base:</label>
+      <input type="number" id="base" class="w-full p-2 border rounded-md" />
+
+      <label class="block mt-2">Altura:</label>
+      <input type="number" id="altura" class="w-full p-2 border rounded-md" />
+
+      <button type="button" onclick="calcularArea()"
+        class="mt-4 w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700">Calcular Área</button>
+
+      <p id="areaResultado" class="mt-2 text-center font-medium text-gray-700"></p>
+    </fieldset>
+
+    <fieldset class="border border-gray-300 rounded-xl p-5">
+      <legend class="text-xl font-bold text-blue-600 px-2">Conta Corrente</legend>
+
+      <input type="text" id="nomeCorrente" placeholder="Nome" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="text" id="bancoCorrente" placeholder="Banco" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="text" id="numeroCorrente" placeholder="Número da Conta" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="number" id="saldoCorrente" placeholder="Saldo" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="number" id="especialCorrente" placeholder="Saldo Especial"
+        class="w-full mt-2 p-2 border rounded-md" />
+
+      <button type="button" onclick="mostrarContaCorrente()"
+        class="mt-4 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Mostrar Corrente</button>
+
+      <p id="resultadoCorrente" class="mt-2 text-sm text-center text-gray-700"></p>
+    </fieldset>
+
+    <fieldset class="border border-gray-300 rounded-xl p-5">
+      <legend class="text-xl font-bold text-purple-600 px-2">Conta Poupança</legend>
+
+      <input type="text" id="nomePoupanca" placeholder="Nome" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="text" id="bancoPoupanca" placeholder="Banco" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="text" id="numeroPoupanca" placeholder="Número da Conta" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="number" id="saldoPoupanca" placeholder="Saldo" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="number" id="jurosPoupanca" placeholder="Juros (%)" class="w-full mt-2 p-2 border rounded-md" />
+      <input type="date" id="vencimentoPoupanca" class="w-full mt-2 p-2 border rounded-md" />
+
+      <button type="button" onclick="mostrarContaPoupanca()"
+        class="mt-4 w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700">Mostrar Poupança</button>
+
+      <p id="resultadoPoupanca" class="mt-2 text-sm text-center text-gray-700"></p>
+    </fieldset>
+
+  </form>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
