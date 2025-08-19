@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatec Sorocaba - Cursos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Escolha um curso da Fatec Sorocaba</h2>
+    <select id="cursos" onchange="abrirCurso()">
+      <option value="">-- Selecione --</option>
+      <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+      <option value="eletronica">Eletrônica Automotiva</option>
+      <option value="fabricacao">Fabricação Mecânica</option>
+      <option value="gestao">Gestão da Produção Industrial</option>
+      <option value="logistica">Logística</option>
+      <option value="manufatura">Manufatura Avançada</option>
+      <option value="polimeros">Polímeros</option>
+      <option value="processos">Processos Metalúrgicos</option>
+      <option value="projMec">Projetos Mecânicos</option>
+      <option value="sistemasBiomedicos">Sistemas Biomédicos</option>
+    </select>
+  </div>
+
+  <script>
+    function abrirCurso() {
+      const select = document.getElementById("cursos");
+      const curso = select.value;
+
+      if (curso === "") return; // não faz nada se não selecionar
+
+      const confirmacao = confirm("Deseja realmente abrir informações sobre este curso?");
+      
+      if (confirmacao) {
+        let conteudo = "";
+
+        switch(curso) {
+          case "ads":
+            conteudo = "<h2>Análise e Desenvolvimento de Sistemas</h2><p>Curso focado em desenvolvimento de software, programação e banco de dados.</p>";
+            break;
+          case "eletronica":
+            conteudo = "<h2>Eletrônica Automotiva</h2><p>Voltado para sistemas eletrônicos aplicados em veículos modernos.</p>";
+            break;
+          case "fabricacao":
+            conteudo = "<h2>Fabricação Mecânica</h2><p>Curso voltado para processos de fabricação, usinagem e controle de qualidade.</p>";
+            break;
+          case "gestao":
+            conteudo = "<h2>Gestão da Produção Industrial</h2><p>Forma profissionais para otimizar processos produtivos na indústria.</p>";
+            break;
+          case "logistica":
+            conteudo = "<h2>Logística</h2><p>Focado em gestão de transporte, armazenagem e distribuição.</p>";
+            break;
+          case "manufatura":
+            conteudo = "<h2>Manufatura Avançada</h2><p>Voltado para tecnologias modernas de produção industrial.</p>";
+            break;
+          case "polimeros":
+            conteudo = "<h2>Polímeros</h2><p>Curso sobre materiais poliméricos e seus processos de transformação.</p>";
+            break;
+          case "processos":
+            conteudo = "<h2>Processos Metalúrgicos</h2><p>Focado em fundição, soldagem e tratamentos térmicos.</p>";
+            break;
+          case "projMec":
+            conteudo = "<h2>Projetos Mecânicos</h2><p>Curso que desenvolve competências em design e simulação de sistemas mecânicos.</p>";
+            break;
+          case "sistemasBiomedicos":
+            conteudo = "<h2>Sistemas Biomédicos</h2><p>Formação em manutenção e gestão de equipamentos biomédicos.</p>";
+            break;
+        }
+
+        const novaJanela = window.open("", "curso", "width=600,height=300");
+        novaJanela.document.write(`
+          <!DOCTYPE html>
+          <html lang="pt-BR">
+          <head>
+            <meta charset="UTF-8">
+            <title>Informações do Curso</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                padding: 1rem;
+                background: #f9fafb;
+              }
+              h2 { color: #2563eb; }
+              p { font-size: 1rem; color: #333; }
+            </style>
+          </head>
+          <body>
+            ${conteudo}
+          </body>
+          </html>
+        `);
+      }
+    }
+  </script>
+</body>
+</html>
